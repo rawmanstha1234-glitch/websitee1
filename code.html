@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raman Kumar Shrestha | CA inter , CFA L1 Candidate & BBS Scholar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN for Financial Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B192C',
+                            900: '#070F1E',
+                            950: '#030712'
+                        },
+                        gold: {
+                            400: '#F3C623',
+                            500: '#D4AF37',
+                            600: '#AA820A'
+                        },
+                        slateDark: '#1E293B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #AA820A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .card-glass:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+        }
+        .tab-active {
+            border-bottom: 2px solid #D4AF37;
+            color: #D4AF37 !important;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070F1E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-gold-500 selection:text-navy-950">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#home" onclick="navigateTo('#home')" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-navy-950 font-serif font-bold text-xl shadow-lg shadow-gold-500/10 group-hover:scale-105 transition-transform">
+                        RK
+                    </div>
+                    <div>
+                        <span class="text-lg font-serif font-bold tracking-wide text-white group-hover:text-gold-400 transition-colors">Raman K. Shrestha</span>
+                        <span class="block text-xs text-gold-500/80 font-mono tracking-wider uppercase">CA Aspirant • CFA L1 • BBS</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium">
+                    <a href="#home" id="nav-home" onclick="navigateTo('#home')" class="px-3 py-2 rounded-md transition-colors text-slate-300 hover:text-gold-400 hover:bg-slate-800/50">Home</a>
+                    <a href="#about" id="nav-about" onclick="navigateTo('#about')" class="px-3 py-2 rounded-md transition-colors text-slate-300 hover:text-gold-400 hover:bg-slate-800/50">About</a>
+                    <a href="#projects" id="nav-projects" onclick="navigateTo('#projects')" class="px-3 py-2 rounded-md transition-colors text-slate-300 hover:text-gold-400 hover:bg-slate-800/50">Projects & Models</a>
+                    <a href="#simulators" id="nav-simulators" onclick="navigateTo('#simulators')" class="px-3 py-2 rounded-md transition-colors text-slate-300 hover:text-gold-400 hover:bg-slate-800/50">Live Simulators</a>
+                    <a href="#skills" id="nav-skills" onclick="navigateTo('#skills')" class="px-3 py-2 rounded-md transition-colors text-slate-300 hover:text-gold-400 hover:bg-slate-800/50">Competencies</a>
+                    <a href="#contact" id="nav-contact" onclick="navigateTo('#contact')" class="ml-2 px-4 py-2 rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/30 hover:bg-gold-500 hover:text-navy-950 transition-all font-semibold">Contact Me</a>
+                </nav>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900 border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+            <a href="#home" onclick="navigateTo('#home'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-slate-200 hover:bg-slate-800 hover:text-gold-400">Home</a>
+            <a href="#about" onclick="navigateTo('#about'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-slate-200 hover:bg-slate-800 hover:text-gold-400">About</a>
+            <a href="#projects" onclick="navigateTo('#projects'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-slate-200 hover:bg-slate-800 hover:text-gold-400">Projects & Models</a>
+            <a href="#simulators" onclick="navigateTo('#simulators'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-slate-200 hover:bg-slate-800 hover:text-gold-400">Live Simulators</a>
+            <a href="#skills" onclick="navigateTo('#skills'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-slate-200 hover:bg-slate-800 hover:text-gold-400">Competencies</a>
+            <a href="#contact" onclick="navigateTo('#contact'); toggleMobileMenu();" class="block px-3 py-2 rounded-md text-base text-gold-400 font-semibold bg-gold-500/10 border border-gold-500/30 text-center">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- LIVE URL DISPLAY BANNER -->
+    <div class="bg-slate-900/80 border-b border-slate-800/50 py-1.5 px-4 text-xs font-mono text-slate-400 flex items-center justify-between">
+        <div class="flex items-center gap-2 max-w-7xl mx-auto w-full">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-slate-500">Active URL Hash Routing:</span>
+            <span id="live-url-indicator" class="text-gold-400 font-bold bg-navy-950 px-2 py-0.5 rounded border border-slate-800">#home</span>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <!-- SECTION: HERO -->
+        <section id="home" class="relative py-20 lg:py-28 overflow-hidden border-b border-slate-800/50">
+            <!-- Background Radial Glow -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Content Left -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400 text-xs font-semibold uppercase tracking-wider">
+                            <i class="fa-solid fa-graduation-cap text-gold-400"></i> Financial Analyst & Chartered Accountancy Aspirant
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white leading-tight">
+                            Hi, I'm <span class="gold-gradient-text">Raman Kumar Shrestha</span>
+                        </h1>
+
+                        <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
+                            Combining technical accounting rigor with advanced financial modeling, equity valuation, and digital marketing analytics. Pursuing <span class="text-gold-400 font-semibold">CA Final</span>, <span class="text-gold-400 font-semibold">CFA Level 1</span>, and <span class="text-gold-400 font-semibold">BBS</span>.
+                        </p>
+
+                        <!-- Academic Pill Badges -->
+                        <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+                            <span class="px-3.5 py-1.5 rounded-md bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-certificate text-emerald-400"></i> CA Aspirant
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-md bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-chart-line text-blue-400"></i> CFA L1 Candidate
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-md bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-university text-amber-400"></i> BBS Scholar
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-md bg-slate-800/80 border border-slate-700 text-slate-200 text-xs font-mono flex items-center gap-2">
+                                <i class="fa-solid fa-file-excel text-green-400"></i> Advanced Excel & VBA
+                            </span>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#projects" onclick="navigateTo('#projects')" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-navy-950 font-bold hover:brightness-110 shadow-lg shadow-gold-500/20 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-folder-open"></i> Explore Financial Projects
+                            </a>
+                            <a href="#simulators" onclick="navigateTo('#simulators')" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-calculator text-gold-400"></i> Try Interactive Models
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Right -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- Card Glow -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-500 to-amber-600 rounded-2xl blur-lg opacity-25"></div>
+                            
+                            <!-- Profile Overview Card -->
+                            <div class="relative bg-navy-900 border border-slate-700 rounded-2xl p-6 shadow-2xl space-y-6">
+                                <div class="flex items-center gap-4 border-b border-slate-800 pb-4">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" 
+                                         alt="Raman Kumar Shrestha Professional Avatar" 
+                                         onerror="this.src='https://placehold.co/400x400/0B192C/D4AF37?text=Raman+K.+Shrestha'"
+                                         class="w-20 h-20 rounded-xl object-cover border-2 border-gold-500/50 shadow-md">
+                                    <div>
+                                        <h2 class="text-xl font-bold text-white">Raman K. Shrestha</h2>
+                                        <p class="text-xs text-slate-400 font-mono">Kathmandu, Nepal</p>
+                                        <div class="flex items-center gap-2 mt-2">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                Available for Consulting & Valuation
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Key Portfolio Stats Highlights -->
+                                <div class="grid grid-cols-2 gap-4 text-center">
+                                    <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-800">
+                                        <div class="text-2xl font-bold text-gold-400 font-mono">4+</div>
+                                        <div class="text-xs text-slate-400">Major Excel Models</div>
+                                    </div>
+                                    <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-800">
+                                        <div class="text-2xl font-bold text-emerald-400 font-mono">DCF & CAPM</div>
+                                        <div class="text-xs text-slate-400">Valuation Frameworks</div>
+                                    </div>
+                                    <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-800">
+                                        <div class="text-2xl font-bold text-blue-400 font-mono">DuPont</div>
+                                        <div class="text-xs text-slate-400">Financial Ratio Engines</div>
+                                    </div>
+                                    <div class="p-3 bg-slate-800/50 rounded-lg border border-slate-800">
+                                        <div class="text-2xl font-bold text-amber-400 font-mono">ROI Analytics</div>
+                                        <div class="text-xs text-slate-400">Digital Campaign Audits</div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                                    <span>Primary Tools:</span>
+                                    <div class="flex items-center gap-3 text-lg text-slate-300">
+                                        <i class="fa-solid fa-file-excel text-green-500" title="Microsoft Excel VBA"></i>
+                                        <i class="fa-solid fa-chart-pie text-amber-500" title="Power BI & Dashboards"></i>
+                                        <i class="fa-solid fa-calculator text-blue-400" title="Financial Modeling"></i>
+                                        <i class="fa-solid fa-bullhorn text-pink-500" title="Marketing Analytics"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ABOUT & QUALIFICATIONS -->
+        <section id="about" class="py-16 bg-navy-900/50 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-mono text-gold-400 uppercase tracking-widest mb-2">// Academic & Professional Persona</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white">Bridging Accounting Rigor with Financial Strategy</h3>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Qualification Card 1: Chartered Accountancy -->
+                    <div class="card-glass rounded-2xl p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Chartered Accountancy (CA)</h4>
+                        <p class="text-xs text-gold-400 font-mono">ICAN / Technical Core</p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Deep grounding in NFRS/IFRS Accounting Standards, Statutory Audit, Income Tax Act, VAT Regulations, and Corporate Law compliance. Specialized in forensic auditing and financial control.
+                        </p>
+                    </div>
+
+                    <!-- Qualification Card 2: CFA Level 1 -->
+                    <div class="card-glass rounded-2xl p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">CFA Level 1 Candidate</h4>
+                        <p class="text-xs text-gold-400 font-mono">CFA Institute, USA</p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Focused on Equity Valuation, Fixed Income Analysis, Portfolio Management, Quantitative Methods, Financial Statement Analysis (FSA), and Corporate Governance principles.
+                        </p>
+                    </div>
+
+                    <!-- Qualification Card 3: BBS Scholar -->
+                    <div class="card-glass rounded-2xl p-6 space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl font-bold">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">BBS Scholar</h4>
+                        <p class="text-xs text-gold-400 font-mono">Bachelor of Business Studies</p>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Comprehensive understanding of business administration, managerial economics, organizational strategy, market research, and financial decision-making in emerging markets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PROJECTS SHOWCASE -->
+        <section id="projects" class="py-20 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-xs font-mono text-gold-400 uppercase tracking-widest mb-2">// Featured Analytical Work</h2>
+                        <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white">Financial & Marketing Excel Models</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-2 md:mt-0 max-w-md">
+                        Interactive breakdown of models developed across Banking Equity Research, Capital Structure Optimization, Digital Marketing ROI, and Integrated Financials.
+                    </p>
+                </div>
+
+                <!-- Projects Filter Tabs -->
+                <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-4 mb-8">
+                    <button onclick="filterProjects('all')" id="tab-all" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gold-500 text-navy-950 font-semibold">All Projects (4)</button>
+                    <button onclick="filterProjects('banking')" id="tab-banking" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-slate-800">Equity Valuation</button>
+                    <button onclick="filterProjects('corporate')" id="tab-corporate" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-slate-800">Corporate Finance</button>
+                    <button onclick="filterProjects('marketing')" id="tab-marketing" class="px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-slate-800">Marketing Analytics</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- PROJECT 1: Nabil Bank Equity Research -->
+                    <div class="project-card banking card-glass rounded-2xl overflow-hidden flex flex-col justify-between transition-all" id="project-card-nabil">
+                        <div>
+                            <div class="relative h-48 overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Nabil Bank Equity Research" 
+                                     onerror="this.src='https://placehold.co/800x400/0B192C/D4AF37?text=Nabil+Bank+Equity+Research'"
+                                     class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                                <div class="absolute top-4 left-4 bg-blue-600/90 text-white text-xs font-mono font-bold px-3 py-1 rounded-md">
+                                    Nabil_Bank_Equity_Research.xlsx
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                    <div>
+                                        <span class="text-xs text-gold-400 font-mono">Banking Sector Valuation</span>
+                                        <h4 class="text-2xl font-serif font-bold text-white">Nabil Bank Valuation & Research</h4>
+                                    </div>
+                                    <span class="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-bold px-2.5 py-1 rounded">BUY Rating</span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 space-y-4">
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Comprehensive equity research model analyzing Nabil Bank Ltd. Features 5-year historical financial statement breakdown, DuPont ROE decomposition, NPL provisioning analysis, and 2-stage DCF intrinsic valuation.
+                                </p>
+
+                                <!-- Key Output Metrics Table snippet -->
+                                <div class="grid grid-cols-3 gap-2 bg-navy-900/80 p-3 rounded-lg border border-slate-800 text-center text-xs">
+                                    <div>
+                                        <span class="text-slate-400 block">DCF Target Price</span>
+                                        <span class="text-gold-400 font-bold font-mono text-sm">NPR 685.00</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Implied P/E</span>
+                                        <span class="text-white font-bold font-mono text-sm">18.4x</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">ROE (DuPont)</span>
+                                        <span class="text-emerald-400 font-bold font-mono text-sm">15.8%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-file-excel text-green-500 mr-1"></i> Multi-tab Financial Model</span>
+                            <button onclick="openProjectModal('nabil')" class="text-xs font-bold text-gold-400 hover:text-white flex items-center gap-1">
+                                View Deep-Dive Model <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 2: Capital Structure Optimization -->
+                    <div class="project-card corporate card-glass rounded-2xl overflow-hidden flex flex-col justify-between transition-all" id="project-card-capital">
+                        <div>
+                            <div class="relative h-48 overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Capital Structure Optimization" 
+                                     onerror="this.src='https://placehold.co/800x400/0B192C/D4AF37?text=Capital+Structure+Optimization'"
+                                     class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                                <div class="absolute top-4 left-4 bg-indigo-600/90 text-white text-xs font-mono font-bold px-3 py-1 rounded-md">
+                                    Capital_Structure_Optimization_Project.xlsx
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                    <div>
+                                        <span class="text-xs text-gold-400 font-mono">Corporate Finance Strategy</span>
+                                        <h4 class="text-2xl font-serif font-bold text-white">Capital Structure & WACC Model</h4>
+                                    </div>
+                                    <span class="bg-blue-500/20 border border-blue-500/40 text-blue-400 text-xs font-bold px-2.5 py-1 rounded">Opt. D/E: 40/60</span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 space-y-4">
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Quantitative model evaluating optimal debt-to-equity ratios to minimize Weighted Average Cost of Capital (WACC) while factoring in tax shield benefits, interest coverage safety margins, and financial distress probability.
+                                </p>
+
+                                <div class="grid grid-cols-3 gap-2 bg-navy-900/80 p-3 rounded-lg border border-slate-800 text-center text-xs">
+                                    <div>
+                                        <span class="text-slate-400 block">Min WACC</span>
+                                        <span class="text-gold-400 font-bold font-mono text-sm">11.25%</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Cost of Debt (Kd)</span>
+                                        <span class="text-white font-bold font-mono text-sm">8.50%</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Cost of Equity (Ke)</span>
+                                        <span class="text-emerald-400 font-bold font-mono text-sm">13.10%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-chart-line text-blue-400 mr-1"></i> WACC & Leverage Sensitivity</span>
+                            <button onclick="openProjectModal('capital')" class="text-xs font-bold text-gold-400 hover:text-white flex items-center gap-1">
+                                View Deep-Dive Model <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 3: Digital Marketing Campaign -->
+                    <div class="project-card marketing card-glass rounded-2xl overflow-hidden flex flex-col justify-between transition-all" id="project-card-marketing">
+                        <div>
+                            <div class="relative h-48 overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Digital Marketing Campaign Analytics" 
+                                     onerror="this.src='https://placehold.co/800x400/0B192C/D4AF37?text=Digital+Marketing+Analytics'"
+                                     class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                                <div class="absolute top-4 left-4 bg-pink-600/90 text-white text-xs font-mono font-bold px-3 py-1 rounded-md">
+                                    Digital_Marketing_Campaign_Project.xlsx
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                    <div>
+                                        <span class="text-xs text-gold-400 font-mono">Performance Analytics</span>
+                                        <h4 class="text-2xl font-serif font-bold text-white">Digital Campaign ROI & Funnel</h4>
+                                    </div>
+                                    <span class="bg-pink-500/20 border border-pink-500/40 text-pink-400 text-xs font-bold px-2.5 py-1 rounded">4.2x ROAS</span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 space-y-4">
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Data-driven digital marketing evaluation dashboard assessing omni-channel advertising efficiency. Calculates Customer Acquisition Cost (CAC), Lifetime Value (LTV), Conversion Rate Optimization (CRO), and ad spend allocation.
+                                </p>
+
+                                <div class="grid grid-cols-3 gap-2 bg-navy-900/80 p-3 rounded-lg border border-slate-800 text-center text-xs">
+                                    <div>
+                                        <span class="text-slate-400 block">Avg ROAS</span>
+                                        <span class="text-gold-400 font-bold font-mono text-sm">420%</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">CAC</span>
+                                        <span class="text-white font-bold font-mono text-sm">NPR 1,250</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Conv. Rate</span>
+                                        <span class="text-emerald-400 font-bold font-mono text-sm">3.85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-bullhorn text-pink-400 mr-1"></i> Funnel Conversion Analytics</span>
+                            <button onclick="openProjectModal('marketing')" class="text-xs font-bold text-gold-400 hover:text-white flex items-center gap-1">
+                                View Deep-Dive Model <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PROJECT 4: Raman00 Integrated Financial Engine -->
+                    <div class="project-card corporate card-glass rounded-2xl overflow-hidden flex flex-col justify-between transition-all" id="project-card-raman00">
+                        <div>
+                            <div class="relative h-48 overflow-hidden bg-slate-900">
+                                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Integrated Financial Model" 
+                                     onerror="this.src='https://placehold.co/800x400/0B192C/D4AF37?text=Integrated+Financial+Engine'"
+                                     class="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                                <div class="absolute top-4 left-4 bg-emerald-600/90 text-white text-xs font-mono font-bold px-3 py-1 rounded-md">
+                                    raman00.xlsx
+                                </div>
+                                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                                    <div>
+                                        <span class="text-xs text-gold-400 font-mono">Accounting & Tax Engine</span>
+                                        <h4 class="text-2xl font-serif font-bold text-white">Integrated Statement & Ratio Suite</h4>
+                                    </div>
+                                    <span class="bg-green-500/20 border border-green-500/40 text-green-400 text-xs font-bold px-2.5 py-1 rounded">Automated Audit</span>
+                                </div>
+                            </div>
+
+                            <div class="p-6 space-y-4">
+                                <p class="text-sm text-slate-300 leading-relaxed">
+                                    Dynamic master financial spreadsheet integrating 3-statement linkage (Balance Sheet, P&L, Cash Flow), variance reporting, working capital analytics, and Nepal tax liability calculation macros.
+                                </p>
+
+                                <div class="grid grid-cols-3 gap-2 bg-navy-900/80 p-3 rounded-lg border border-slate-800 text-center text-xs">
+                                    <div>
+                                        <span class="text-slate-400 block">Current Ratio</span>
+                                        <span class="text-gold-400 font-bold font-mono text-sm">2.15x</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">Altman Z-Score</span>
+                                        <span class="text-emerald-400 font-bold font-mono text-sm">3.40 (Safe)</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-400 block">EBITDA Margin</span>
+                                        <span class="text-white font-bold font-mono text-sm">22.4%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-gears text-emerald-400 mr-1"></i> Variance & Tax Macros</span>
+                            <button onclick="openProjectModal('raman00')" class="text-xs font-bold text-gold-400 hover:text-white flex items-center gap-1">
+                                View Deep-Dive Model <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LIVE INTERACTIVE SIMULATORS -->
+        <section id="simulators" class="py-20 bg-navy-900/60 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-mono text-gold-400 uppercase tracking-widest mb-2">// Interactive Quantitative Sandboxes</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white">Test Raman's Valuation & Financial Logic</h3>
+                    <p class="text-slate-400 text-sm mt-2">Adjust key parameters live to see valuation prices, capital structure cost curves, and marketing ROAS calculate in real-time.</p>
+                </div>
+
+                <!-- Simulator Selection Buttons -->
+                <div class="flex justify-center gap-2 mb-8">
+                    <button id="sim-btn-dcf" onclick="switchSimulator('dcf')" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-gold-500 text-navy-950 transition-all">
+                        <i class="fa-solid fa-chart-area mr-1"></i> DCF Valuation Calculator
+                    </button>
+                    <button id="sim-btn-wacc" onclick="switchSimulator('wacc')" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                        <i class="fa-solid fa-scale-balanced mr-1"></i> WACC Optimization Curve
+                    </button>
+                    <button id="sim-btn-roas" onclick="switchSimulator('roas')" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all">
+                        <i class="fa-solid fa-bullseye mr-1"></i> Marketing ROI Engine
+                    </button>
+                </div>
+
+                <!-- SIMULATOR CONTAINER -->
+                <div class="card-glass rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto shadow-2xl">
+                    
+                    <!-- SIM 1: DCF VALUATION CALCULATOR -->
+                    <div id="sim-panel-dcf" class="space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Nabil Bank 2-Stage DCF Valuation Simulator</h4>
+                                <p class="text-xs text-slate-400 font-mono">Discounted Cash Flow Model for Banking Equities</p>
+                            </div>
+                            <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-mono rounded-md">Live Calculation</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            <!-- Sliders -->
+                            <div class="space-y-5">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Stage 1 Growth Rate (Yr 1-5):</span>
+                                        <span id="dcf-growth-val" class="text-gold-400 font-mono font-bold">12.0%</span>
+                                    </div>
+                                    <input type="range" id="dcf-growth" min="5" max="25" step="0.5" value="12" oninput="calculateDCF()" class="w-full accent-gold-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Discount Rate / WACC (Ke):</span>
+                                        <span id="dcf-wacc-val" class="text-gold-400 font-mono font-bold">11.5%</span>
+                                    </div>
+                                    <input type="range" id="dcf-wacc" min="8" max="18" step="0.25" value="11.5" oninput="calculateDCF()" class="w-full accent-gold-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Terminal Growth Rate (g):</span>
+                                        <span id="dcf-tg-val" class="text-gold-400 font-mono font-bold">4.5%</span>
+                                    </div>
+                                    <input type="range" id="dcf-tg" min="2" max="7" step="0.25" value="4.5" oninput="calculateDCF()" class="w-full accent-gold-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Base Year Free Cash Flow (NPR Cr):</span>
+                                        <span id="dcf-fcf-val" class="text-gold-400 font-mono font-bold">NPR 4,200 Cr</span>
+                                    </div>
+                                    <input type="range" id="dcf-fcf" min="2000" max="8000" step="100" value="4200" oninput="calculateDCF()" class="w-full accent-gold-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+                            </div>
+
+                            <!-- Output Box -->
+                            <div class="bg-navy-950 p-6 rounded-xl border border-slate-800 text-center space-y-4">
+                                <span class="text-xs uppercase text-slate-400 font-mono">Calculated Intrinsic Share Price</span>
+                                <div id="dcf-result-price" class="text-4xl sm:text-5xl font-serif font-extrabold text-gold-400">NPR 685.40</div>
+                                <div class="flex justify-around text-xs border-t border-slate-800 pt-3">
+                                    <div>
+                                        <span class="text-slate-500 block">Implied P/E</span>
+                                        <span id="dcf-result-pe" class="text-white font-bold font-mono">18.4x</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">Margin of Safety</span>
+                                        <span id="dcf-result-mos" class="text-emerald-400 font-bold font-mono">+16.2%</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">Recommendation</span>
+                                        <span id="dcf-result-rec" class="text-emerald-400 font-bold">ACCUMULATE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIM 2: WACC OPTIMIZATION PANEL -->
+                    <div id="sim-panel-wacc" class="hidden space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Capital Structure WACC Optimization Engine</h4>
+                                <p class="text-xs text-slate-400 font-mono">Minimizing Weighted Cost of Debt & Equity</p>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono rounded-md">Optimal Debt Search</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Debt Ratio (% of Capital):</span>
+                                        <span id="wacc-debt-val" class="text-blue-400 font-mono font-bold">40%</span>
+                                    </div>
+                                    <input type="range" id="wacc-debt" min="0" max="80" step="5" value="40" oninput="calculateWACC()" class="w-full accent-blue-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Pre-Tax Cost of Debt (Kd):</span>
+                                        <span id="wacc-kd-val" class="text-blue-400 font-mono font-bold">8.5%</span>
+                                    </div>
+                                    <input type="range" id="wacc-kd" min="5" max="15" step="0.5" value="8.5" oninput="calculateWACC()" class="w-full accent-blue-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Corporate Tax Shield Rate:</span>
+                                        <span id="wacc-tax-val" class="text-blue-400 font-mono font-bold">25.0%</span>
+                                    </div>
+                                    <input type="range" id="wacc-tax" min="15" max="35" step="1" value="25" oninput="calculateWACC()" class="w-full accent-blue-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-950 p-6 rounded-xl border border-slate-800 text-center space-y-4">
+                                <span class="text-xs uppercase text-slate-400 font-mono">Calculated WACC %</span>
+                                <div id="wacc-result" class="text-4xl sm:text-5xl font-serif font-extrabold text-blue-400">11.23%</div>
+                                <div class="text-xs text-slate-300 border-t border-slate-800 pt-3">
+                                    <span class="text-slate-400">After-Tax Kd:</span> <span id="wacc-after-kd" class="font-bold text-white">6.38%</span> | 
+                                    <span class="text-slate-400">Cost of Equity (Ke):</span> <span id="wacc-ke" class="font-bold text-white">14.46%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIM 3: MARKETING ROI PANEL -->
+                    <div id="sim-panel-roas" class="hidden space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">Digital Campaign ROI & CAC Engine</h4>
+                                <p class="text-xs text-slate-400 font-mono">Performance Marketing & Funnel Economics</p>
+                            </div>
+                            <span class="px-3 py-1 bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-mono rounded-md">Funnel Simulator</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Monthly Ad Budget (NPR):</span>
+                                        <span id="roas-budget-val" class="text-pink-400 font-mono font-bold">NPR 150,000</span>
+                                    </div>
+                                    <input type="range" id="roas-budget" min="50000" max="500000" step="10000" value="150000" oninput="calculateROAS()" class="w-full accent-pink-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Cost Per Click (CPC):</span>
+                                        <span id="roas-cpc-val" class="text-pink-400 font-mono font-bold">NPR 15</span>
+                                    </div>
+                                    <input type="range" id="roas-cpc" min="5" max="50" step="1" value="15" oninput="calculateROAS()" class="w-full accent-pink-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-slate-300">Landing Page Conv. Rate:</span>
+                                        <span id="roas-cr-val" class="text-pink-400 font-mono font-bold">3.50%</span>
+                                    </div>
+                                    <input type="range" id="roas-cr" min="1" max="10" step="0.25" value="3.5" oninput="calculateROAS()" class="w-full accent-pink-500 bg-slate-800 rounded-lg cursor-pointer">
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-950 p-6 rounded-xl border border-slate-800 text-center space-y-4">
+                                <span class="text-xs uppercase text-slate-400 font-mono">Calculated ROAS</span>
+                                <div id="roas-result" class="text-4xl sm:text-5xl font-serif font-extrabold text-pink-400">4.20x</div>
+                                <div class="flex justify-around text-xs border-t border-slate-800 pt-3">
+                                    <div>
+                                        <span class="text-slate-500 block">Acquisitions</span>
+                                        <span id="roas-acq" class="text-white font-bold font-mono">350</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">CAC</span>
+                                        <span id="roas-cac" class="text-emerald-400 font-bold font-mono">NPR 428</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-slate-500 block">Net Profit</span>
+                                        <span id="roas-profit" class="text-gold-400 font-bold font-mono">NPR 480k</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SKILLS & COMPETENCIES -->
+        <section id="skills" class="py-20 border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-mono text-gold-400 uppercase tracking-widest mb-2">// Technical & Analytical Arsenal</h2>
+                    <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white">Competencies Matrix</h3>
+                    <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Skill Group 1 -->
+                    <div class="card-glass rounded-xl p-6 space-y-4">
+                        <div class="text-gold-400 text-2xl"><i class="fa-solid fa-calculator"></i></div>
+                        <h4 class="text-lg font-bold text-white">Financial Modeling & Valuation</h4>
+                        <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> DCF & Multiples Valuation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> DuPont ROE Analysis</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> LBO & Sensitivity Tables</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 3-Statement Linkage</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Group 2 -->
+                    <div class="card-glass rounded-xl p-6 space-y-4">
+                        <div class="text-emerald-400 text-2xl"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h4 class="text-lg font-bold text-white">Audit & Nepalese Taxation</h4>
+                        <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> NFRS / IFRS Compliance</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Income Tax Act 2058</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> VAT & TDS Reconciliations</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Statutory Audit Procedures</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Group 3 -->
+                    <div class="card-glass rounded-xl p-6 space-y-4">
+                        <div class="text-blue-400 text-2xl"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h4 class="text-lg font-bold text-white">Data & Spreadsheet Mastery</h4>
+                        <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Excel VBA Macros & Automation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Power Query & Data Modeling</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Power BI Interactive Dashboards</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Tally Prime & ERPs</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Group 4 -->
+                    <div class="card-glass rounded-xl p-6 space-y-4">
+                        <div class="text-pink-400 text-2xl"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h4 class="text-lg font-bold text-white">Marketing Analytics</h4>
+                        <ul class="space-y-2 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> ROAS & CAC Optimization</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Meta Ads & Google Analytics</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Campaign Budget Allocation</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Funnel Conversion Metrics</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CONTACT & CONNECT -->
+        <section id="contact" class="py-20 bg-navy-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Left info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-xs font-mono text-gold-400 uppercase tracking-widest">// Direct Contact</span>
+                        <h3 class="text-3xl font-serif font-bold text-white">Let's Discuss Financial Strategy or Audit Engagements</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Interested in reviewing my full equity models, discussing financial analysis consulting, or reviewing CA/CFA research collaborations? Feel free to reach out directly.
+                        </p>
+
+                        <div class="space-y-4 pt-2 text-sm">
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-navy-900 border border-slate-800">
+                                <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-slate-400">Email Address</span>
+                                    <span class="text-white font-mono">raman.shrestha.ca@gmail.com</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-navy-900 border border-slate-800">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-slate-400">Location</span>
+                                    <span class="text-white">Kathmandu, Nepal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 p-3 rounded-lg bg-navy-900 border border-slate-800">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-slate-400">LinkedIn Profile</span>
+                                    <span class="text-white font-mono">linkedin.com/in/raman-k-shrestha</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Contact Form -->
+                    <div class="lg:col-span-7">
+                        <div class="card-glass rounded-2xl p-8 space-y-6">
+                            <h4 class="text-xl font-bold text-white">Send a Message</h4>
+                            
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+                                        <input type="text" required placeholder="e.g. Aditi Sharma" class="w-full bg-navy-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-mono text-slate-300 mb-1">Email Address</label>
+                                        <input type="email" required placeholder="name@company.com" class="w-full bg-navy-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-300 mb-1">Subject / Project Interest</label>
+                                    <select class="w-full bg-navy-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500">
+                                        <option>Equity Valuation Inquiry</option>
+                                        <option>Capital Structure / Corporate Finance</option>
+                                        <option>Audit & Tax Consulting</option>
+                                        <option>Digital Marketing ROI Strategy</option>
+                                        <option>General Networking</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+                                    <textarea rows="4" required placeholder="Write your message here..." class="w-full bg-navy-950 border border-slate-800 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-gold-500"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full py-3 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold rounded-lg transition-all shadow-lg shadow-gold-500/20">
+                                    Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+                                </button>
+                            </form>
+
+                            <!-- Submission Notice -->
+                            <div id="contact-alert" class="hidden p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium">
+                                <i class="fa-solid fa-circle-check mr-2"></i> Thank you! Your message has been sent to Raman Kumar Shrestha.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 border-t border-slate-800 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Raman Kumar Shrestha. CA Aspirant | CFA L1 Candidate | BBS Scholar.
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="#home" onclick="navigateTo('#home')" class="hover:text-gold-400">Top</a>
+                <a href="#projects" onclick="navigateTo('#projects')" class="hover:text-gold-400">Projects</a>
+                <a href="#simulators" onclick="navigateTo('#simulators')" class="hover:text-gold-400">Simulators</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT DETAIL MODAL (Deep-Dive Model Viewer) -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-navy-950/90 backdrop-blur-md overflow-y-auto flex items-center justify-center p-4">
+        <div class="bg-navy-900 border border-slate-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 relative shadow-2xl">
+            <!-- Modal Close Button -->
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white p-2 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Content Header -->
+            <div id="modal-header-content">
+                <!-- Dynamically filled -->
+            </div>
+
+            <!-- Modal Body with Financial Charts & Sheet Views -->
+            <div id="modal-body-content" class="space-y-6">
+                <!-- Dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. LIVE HASH ROUTING & SECTION NAVIGATION
+        // ==========================================
+        function navigateTo(hash) {
+            window.location.hash = hash;
+        }
+
+        function handleHashChange() {
+            let hash = window.location.hash || '#home';
+            
+            // Update URL indicator banner
+            const indicator = document.getElementById('live-url-indicator');
+            if (indicator) indicator.textContent = hash;
+
+            // Highlight nav items
+            const navKeys = ['home', 'about', 'projects', 'simulators', 'skills', 'contact'];
+            navKeys.forEach(key => {
+                const navEl = document.getElementById(`nav-${key}`);
+                if (navEl) {
+                    if (hash === `#${key}` || (hash.startsWith('#project-') && key === 'projects')) {
+                        navEl.classList.add('text-gold-400', 'bg-slate-800/80');
+                        navEl.classList.remove('text-slate-300');
+                    } else {
+                        navEl.classList.remove('text-gold-400', 'bg-slate-800/80');
+                        navEl.classList.add('text-slate-300');
+                    }
+                }
+            });
+
+            // Handle Project Modal deep links (e.g. #project-nabil)
+            if (hash.startsWith('#project-')) {
+                const projKey = hash.replace('#project-', '');
+                openProjectModal(projKey, false); // don't update hash inside modal function to avoid loop
+            } else {
+                closeProjectModal(false);
+            }
+
+            // Scroll section into view smooth
+            if (!hash.startsWith('#project-')) {
+                const targetEl = document.querySelector(hash);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('load', () => {
+            handleHashChange();
+            // Initialize financial calculations on load
+            calculateDCF();
+            calculateWACC();
+            calculateROAS();
+        });
+
+        // Toggle Mobile Navigation Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Project Filter Logic
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const tabs = ['all', 'banking', 'corporate', 'marketing'];
+            
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (btn) {
+                    if (t === category) {
+                        btn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all bg-gold-500 text-navy-950 font-semibold";
+                    } else {
+                        btn.className = "px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-slate-800";
+                    }
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ==========================================
+        // 2. PROJECT MODAL DEEP-DIVE VIEWER
+        // ==========================================
+        let currentChartInstance = null;
+
+        const projectData = {
+            'nabil': {
+                file: 'Nabil_Bank_Equity_Research.xlsx',
+                title: 'Nabil Bank Ltd - DCF Valuation & Equity Research',
+                category: 'Banking Equity Research',
+                desc: 'Detailed financial forecast and valuation of Nabil Bank Ltd (Nepal). Features DuPont financial ratios breakdown, NPL & provisioning stress tests, cost of equity (CAPM), and 2-stage Discounted Cash Flow valuation.',
+                metrics: [
+                    { label: 'Intrinsic Share Value', val: 'NPR 685.00' },
+                    { label: 'Market Price (CMP)', val: 'NPR 589.00' },
+                    { label: 'Upside Potential', val: '+16.3%' },
+                    { label: 'Recommendation', val: 'STRONG BUY' }
+                ],
+                chartType: 'line',
+                chartTitle: '5-Year Net Interest Income (NII) vs Net Profit Growth (NPR Cr)',
+                chartData: {
+                    labels: ['2021', '2022', '2023', '2024 (Est)', '2025 (Proj)'],
+                    datasets: [
+                        { label: 'Net Interest Income', data: [7800, 9200, 11400, 13100, 15200], borderColor: '#D4AF37', backgroundColor: 'rgba(212, 175, 55, 0.1)', fill: true },
+                        { label: 'Net Profit', data: [4100, 4800, 5600, 6400, 7500], borderColor: '#10B981', backgroundColor: 'transparent' }
+                    ]
+                }
+            },
+            'capital': {
+                file: 'Capital_Structure_Optimization_Project.xlsx',
+                title: 'Capital Structure & WACC Optimization Model',
+                category: 'Corporate Finance Strategy',
+                desc: 'Mathematical sensitivity model assessing financial leverage tradeoffs. Analyzes the optimal mix of long-term debt and equity capital to minimize Weighted Average Cost of Capital (WACC).',
+                metrics: [
+                    { label: 'Optimal D/E Ratio', val: '40% Debt / 60% Equity' },
+                    { label: 'Minimum WACC', val: '11.25%' },
+                    { label: 'Interest Coverage Ratio', val: '4.85x' },
+                    { label: 'Debt Capacity Limit', val: 'NPR 1.25 Billion' }
+                ],
+                chartType: 'line',
+                chartTitle: 'WACC & Cost of Capital Curve vs Debt Ratio (% Leverage)',
+                chartData: {
+                    labels: ['0%', '10%', '20%', '30%', '40% (Optimum)', '50%', '60%', '70%'],
+                    datasets: [
+                        { label: 'WACC %', data: [13.5, 12.8, 12.1, 11.5, 11.25, 11.8, 12.9, 14.5], borderColor: '#6366F1', backgroundColor: 'transparent', borderWidth: 3 },
+                        { label: 'Cost of Equity (Ke)', data: [13.5, 13.8, 14.2, 14.8, 15.6, 16.8, 18.5, 21.0], borderColor: '#EF4444', borderDash: [5,5] },
+                        { label: 'After-Tax Kd', data: [6.0, 6.0, 6.2, 6.5, 7.0, 8.2, 10.0, 12.5], borderColor: '#10B981', borderDash: [5,5] }
+                    ]
+                }
+            },
+            'marketing': {
+                file: 'Digital_Marketing_Campaign_Project.xlsx',
+                title: 'Omni-Channel Digital Campaign Analytics',
+                category: 'Performance Marketing Analytics',
+                desc: 'Multi-channel attribution and ad performance audit model tracking Meta Ads, Google Search, and Display campaigns. Calculates CAC, LTV, ROAS, and conversion funnel drop-offs.',
+                metrics: [
+                    { label: 'Return on Ad Spend (ROAS)', val: '4.2x (420%)' },
+                    { label: 'Customer Acquisition Cost', val: 'NPR 1,250' },
+                    { label: 'Click-Through Rate (CTR)', val: '2.85%' },
+                    { label: 'Total Campaign Budget', val: 'NPR 450,000' }
+                ],
+                chartType: 'bar',
+                chartTitle: 'ROAS Performance Across Marketing Channels',
+                chartData: {
+                    labels: ['Meta Retargeting', 'Google Search (High Intent)', 'Meta Cold Audience', 'YouTube Video', 'Display Ads'],
+                    datasets: [
+                        { label: 'ROAS Multiple (x)', data: [5.8, 4.6, 3.2, 2.5, 1.8], backgroundColor: ['#EC4899', '#3B82F6', '#F59E0B', '#10B981', '#64748B'] }
+                    ]
+                }
+            },
+            'raman00': {
+                file: 'raman00.xlsx',
+                title: 'Integrated Financial Engine & Variance Suite',
+                category: 'Accounting & Statutory Audit',
+                desc: 'Automated 3-statement financial workbook featuring integrated Balance Sheet, P&L, Cash Flow, Altman Z-score solvency analysis, and Nepalese Corporate Income Tax calculation formulas.',
+                metrics: [
+                    { label: 'Current Liquidity Ratio', val: '2.15x' },
+                    { label: 'Altman Z-Score', val: '3.40 (Safe Zone)' },
+                    { label: 'Gross Profit Margin', val: '38.5%' },
+                    { label: 'Nepal Tax Liability Calc', val: 'Automated' }
+                ],
+                chartType: 'bar',
+                chartTitle: 'Financial Ratios Benchmark vs Industry Median',
+                chartData: {
+                    labels: ['Current Ratio', 'Quick Ratio', 'ROE %', 'ROA %', 'EBITDA Margin %'],
+                    datasets: [
+                        { label: 'Raman Model Output', data: [2.15, 1.65, 18.2, 9.4, 22.4], backgroundColor: '#D4AF37' },
+                        { label: 'Industry Peer Average', data: [1.80, 1.20, 14.5, 7.1, 18.0], backgroundColor: '#334155' }
+                    ]
+                }
+            }
+        };
+
+        function openProjectModal(key, updateHash = true) {
+            const modal = document.getElementById('project-modal');
+            const header = document.getElementById('modal-header-content');
+            const body = document.getElementById('modal-body-content');
+            const data = projectData[key];
+
+            if (!data) return;
+
+            if (updateHash) {
+                window.location.hash = `#project-${key}`;
+            }
+
+            header.innerHTML = `
+                <div class="flex items-center gap-2 text-xs font-mono text-gold-400 mb-1">
+                    <i class="fa-solid fa-file-excel text-green-500"></i> ${data.file} • ${data.category}
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white">${data.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-300 mt-2">${data.desc}</p>
+            `;
+
+            let metricsHtml = data.metrics.map(m => `
+                <div class="bg-navy-950 p-3 rounded-lg border border-slate-800 text-center">
+                    <span class="text-xs text-slate-400 block">${m.label}</span>
+                    <span class="text-sm sm:text-base font-bold font-mono text-gold-400">${m.val}</span>
+                </div>
+            `).join('');
+
+            body.innerHTML = `
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    ${metricsHtml}
+                </div>
+
+                <div class="bg-navy-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center text-xs font-mono text-slate-400">
+                        <span><i class="fa-solid fa-chart-simple text-gold-400 mr-1"></i> Interactive Model Visualization</span>
+                        <span>Source: ${data.file}</span>
+                    </div>
+                    <div class="h-64 relative">
+                        <canvas id="modal-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-800/40 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-2">
+                    <span class="font-bold text-white uppercase tracking-wider block font-mono"><i class="fa-solid fa-circle-info text-blue-400 mr-1"></i> Model Logic & Features:</span>
+                    <p>Includes dynamic cell linking, scenario manager (Base, Best, Bear), tax shield adjustments under ICAN guidelines, and sensitivity data tables.</p>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+
+            // Render Chart inside modal
+            setTimeout(() => {
+                const ctx = document.getElementById('modal-chart').getContext('2d');
+                if (currentChartInstance) {
+                    currentChartInstance.destroy();
+                }
+                currentChartInstance = new Chart(ctx, {
+                    type: data.chartType,
+                    data: data.chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#94A3B8', font: { family: 'Inter' } } },
+                            title: { display: true, text: data.chartTitle, color: '#F3C623', font: { size: 13 } }
+                        },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            y: { ticks: { color: '#94A3B8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                        }
+                    }
+                });
+            }, 50);
+        }
+
+        function closeProjectModal(resetHash = true) {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            if (resetHash && window.location.hash.startsWith('#project-')) {
+                window.location.hash = '#projects';
+            }
+        }
+
+        // ==========================================
+        // 3. INTERACTIVE SIMULATORS CALCULATORS LOGIC
+        // ==========================================
+        function switchSimulator(type) {
+            ['dcf', 'wacc', 'roas'].forEach(t => {
+                const panel = document.getElementById(`sim-panel-${t}`);
+                const btn = document.getElementById(`sim-btn-${t}`);
+                if (t === type) {
+                    panel.classList.remove('hidden');
+                    btn.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-gold-500 text-navy-950 transition-all";
+                } else {
+                    panel.classList.add('hidden');
+                    btn.className = "px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-800 text-slate-300 hover:bg-slate-700 transition-all";
+                }
+            });
+        }
+
+        // 1. DCF Calculation
+        function calculateDCF() {
+            const g = parseFloat(document.getElementById('dcf-growth').value) / 100;
+            const r = parseFloat(document.getElementById('dcf-wacc').value) / 100;
+            const tg = parseFloat(document.getElementById('dcf-tg').value) / 100;
+            const baseFCF = parseFloat(document.getElementById('dcf-fcf').value);
+
+            document.getElementById('dcf-growth-val').innerText = (g * 100).toFixed(1) + '%';
+            document.getElementById('dcf-wacc-val').innerText = (r * 100).toFixed(2) + '%';
+            document.getElementById('dcf-tg-val').innerText = (tg * 100).toFixed(2) + '%';
+            document.getElementById('dcf-fcf-val').innerText = 'NPR ' + baseFCF.toLocaleString() + ' Cr';
+
+            // DCF valuation formula approximation
+            let pvYears = 0;
+            let currentFCF = baseFCF;
+            for (let i = 1; i <= 5; i++) {
+                currentFCF *= (1 + g);
+                pvYears += currentFCF / Math.pow(1 + r, i);
+            }
+            const terminalVal = (currentFCF * (1 + tg)) / (r - tg);
+            const pvTerminal = terminalVal / Math.pow(1 + r, 5);
+            const enterpriseVal = pvYears + pvTerminal;
+
+            // Per share value assuming 1,000 Cr shares
+            const targetPrice = (enterpriseVal * 10) / 75; // illustrative scaling ratio
+            
+            document.getElementById('dcf-result-price').innerText = 'NPR ' + targetPrice.toFixed(2);
+            document.getElementById('dcf-result-pe').innerText = (targetPrice / 37.2).toFixed(1) + 'x';
+            
+            const cmp = 589;
+            const mos = ((targetPrice - cmp) / cmp) * 100;
+            document.getElementById('dcf-result-mos').innerText = (mos >= 0 ? '+' : '') + mos.toFixed(1) + '%';
+            document.getElementById('dcf-result-rec').innerText = mos > 10 ? 'STRONG BUY' : (mos > 0 ? 'ACCUMULATE' : 'HOLD');
+        }
+
+        // 2. WACC Calculation
+        function calculateWACC() {
+            const wD = parseFloat(document.getElementById('wacc-debt').value) / 100;
+            const wE = 1 - wD;
+            const kd = parseFloat(document.getElementById('wacc-kd').value) / 100;
+            const tax = parseFloat(document.getElementById('wacc-tax').value) / 100;
+            
+            // CAPM Cost of Equity (Rf 7% + Beta * ERP 6%)
+            const beta = 1.0 + (wD * 0.7); // levered beta increase
+            const ke = 0.07 + (beta * 0.06);
+
+            const afterTaxKd = kd * (1 - tax);
+            const wacc = (wE * ke) + (wD * afterTaxKd);
+
+            document.getElementById('wacc-debt-val').innerText = (wD * 100).toFixed(0) + '%';
+            document.getElementById('wacc-kd-val').innerText = (kd * 100).toFixed(1) + '%';
+            document.getElementById('wacc-tax-val').innerText = (tax * 100).toFixed(1) + '%';
+
+            document.getElementById('wacc-result').innerText = (wacc * 100).toFixed(2) + '%';
+            document.getElementById('wacc-after-kd').innerText = (afterTaxKd * 100).toFixed(2) + '%';
+            document.getElementById('wacc-ke').innerText = (ke * 100).toFixed(2) + '%';
+        }
+
+        // 3. Marketing ROAS Calculation
+        function calculateROAS() {
+            const budget = parseFloat(document.getElementById('roas-budget').value);
+            const cpc = parseFloat(document.getElementById('roas-cpc').value);
+            const cr = parseFloat(document.getElementById('roas-cr').value) / 100;
+
+            document.getElementById('roas-budget-val').innerText = 'NPR ' + budget.toLocaleString();
+            document.getElementById('roas-cpc-val').innerText = 'NPR ' + cpc;
+            document.getElementById('roas-cr-val').innerText = (cr * 100).toFixed(2) + '%';
+
+            const clicks = budget / cpc;
+            const conversions = Math.round(clicks * cr);
+            const cac = conversions > 0 ? Math.round(budget / conversions) : 0;
+            
+            // Assume Average Order Value = NPR 1,800
+            const revenue = conversions * 1800;
+            const roas = budget > 0 ? (revenue / budget) : 0;
+            const netProfit = revenue - budget;
+
+            document.getElementById('roas-result').innerText = roas.toFixed(2) + 'x';
+            document.getElementById('roas-acq').innerText = conversions.toLocaleString();
+            document.getElementById('roas-cac').innerText = 'NPR ' + cac.toLocaleString();
+            document.getElementById('roas-profit').innerText = 'NPR ' + Math.round(netProfit / 1000) + 'k';
+        }
+
+        // Contact Form Handling
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('contact-alert');
+            alertBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
