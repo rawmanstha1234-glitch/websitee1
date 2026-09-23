@@ -1,0 +1,10 @@
+/* Keep menu content visible when JavaScript is unavailable. */
+#menu {
+  position: static;
+  transform: none;
+  width: auto;
+  height: auto;
+  padding: 1rem 0;
+  border: 0;
+  box-shadow: none;
+}
